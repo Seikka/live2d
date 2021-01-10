@@ -42,7 +42,7 @@ function loadWidget(config) {
 	let userAction = false,
 		userActionTimer,
 		messageTimer,
-		messageArray = ["好久不见，日子过得好快呢……", "大坏蛋！你都多久没理人家了呀，嘤嘤嘤～", "嗨～快来逗我玩吧！", "拿小拳拳锤你胸口！", "记得把小家加入 Adblock 白名单哦！"];
+		messageArray = ["好累啊，和主人做爱感觉时间过的好快……", "我想吃主人的肉棒了！", "主人～快来操我吧！", "拿我的巨乳给你插鸡鸡！", "记得把鸡鸡插到人家最深处哦！"];
 	window.addEventListener("mousemove", () => userAction = true);
 	window.addEventListener("keydown", () => userAction = true);
 	setInterval(() => {
@@ -81,7 +81,7 @@ function loadWidget(config) {
 		});
 		document.querySelector("#waifu-tool .fa-times").addEventListener("click", () => {
 			localStorage.setItem("waifu-display", Date.now());
-			showMessage("愿你有一天能与重要的人重逢。", 2000, 11);
+			showMessage("愿你有一天能与喜欢的人做爱。", 2000, 11);
 			document.getElementById("waifu").style.bottom = "-500px";
 			setTimeout(() => {
 				document.getElementById("waifu").style.display = "none";
@@ -91,13 +91,13 @@ function loadWidget(config) {
 		const devtools = () => {};
 		console.log("%c", devtools);
 		devtools.toString = () => {
-			showMessage("哈哈，你打开了控制台，是想要看看我的小秘密吗？", 6000, 9);
+			showMessage("主人掀开人家的衣服，是想要看看我的小咪咪吗？", 6000, 9);
 		};
 		window.addEventListener("copy", () => {
-			showMessage("你都复制了些什么呀，转载要记得加上出处哦！", 6000, 9);
+			showMessage("你都复制了些什么呀，快给我看看！", 6000, 9);
 		});
 		window.addEventListener("visibilitychange", () => {
-			if (!document.hidden) showMessage("哇，你终于回来了～", 6000, 9);
+			if (!document.hidden) showMessage("啊，主人快来操我～", 6000, 9);
 		});
 	})();
 
@@ -227,14 +227,14 @@ function loadWidget(config) {
 			if (!modelList) await loadModelList();
 			const target = randomSelection(modelList.models[modelId]);
 			loadlive2d("live2d", `${cdnPath}model/${target}/index.json`);
-			showMessage("我的新衣服好看嘛？", 4000, 10);
+			showMessage("主人还是喜欢人家脱光光吧？", 4000, 10);
 		} else {
 			// 可选 "rand"(随机), "switch"(顺序)
 			fetch(`${apiPath}rand_textures/?id=${modelId}-${modelTexturesId}`)
 				.then(response => response.json())
 				.then(result => {
-					if (result.textures.id === 1 && (modelTexturesId === 1 || modelTexturesId === 0)) showMessage("我还没有其他衣服呢！", 4000, 10);
-					else loadModel(modelId, result.textures.id, "我的新衣服好看嘛？");
+					if (result.textures.id === 1 && (modelTexturesId === 1 || modelTexturesId === 0)) showMessage("人家想脱光光了啦！", 4000, 10);
+					else loadModel(modelId, result.textures.id, "果然主人还是对不穿衣服的人家熟悉一点吧？");
 				});
 		}
 	}
@@ -263,7 +263,7 @@ function initWidget(config, apiPath) {
 		};
 	}
 	document.body.insertAdjacentHTML("beforeend", `<div id="waifu-toggle">
-			<span>看板娘</span>
+			<span>Live2D</span>
 		</div>`);
 	const toggle = document.getElementById("waifu-toggle");
 	toggle.addEventListener("click", () => {
